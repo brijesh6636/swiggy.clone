@@ -106,7 +106,7 @@ export const CartItems = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center px-20 py-5 bg-gray-200 ">
+    <div className="flex flex-wrap justify-center px-24 py-8 bg-gray-200 min-h-screen">
 
       <div>
         {OrderSucessful ? <OrderSucess /> : Citems.length === 0 ? (
@@ -122,41 +122,41 @@ export const CartItems = () => {
         )}
       </div>
       {Citems.length === 0 ? (
-        <h1>Add something to Cart</h1>
+        <h1 className="text-xl font-semibold mt-8">Add something to Cart</h1>
       ) : (
-        <div className="p-5  bg-white">
-          <h3 className="text-lg m-1 p-1">Bill details:</h3>
-          <div className="flex flex-wrap border-b border-stone-950 text-base">
-            <div>
-              <p className="m-1 p-1">Items Total</p>
-              <p className="m-1 p-1">Delivery Partner fee</p>
-              <p className="m-1 p-1">GST and Restaurant Charges</p>
+        <div className="p-6 bg-white rounded-lg shadow-lg ml-6">
+          <h3 className="text-xl font-bold mb-4">Bill details:</h3>
+          <div className="flex flex-wrap border-b border-stone-950 text-base pb-3">
+            <div className="flex-1">
+              <p className="my-2">Items Total</p>
+              <p className="my-2">Delivery Partner fee</p>
+              <p className="my-2">GST and Restaurant Charges</p>
             </div>
-            <div>
-              <p className="m-1 p-1">{finalPrice}</p>
-              <p className="text-green-600 m-1 p-1">FREE</p>
-              <p className="m-1 p-1">{gstCharge}</p>
+            <div className="flex-1 text-right">
+              <p className="my-2">₹{finalPrice}</p>
+              <p className="text-green-600 my-2 font-semibold">FREE</p>
+              <p className="my-2">₹{gstCharge}</p>
             </div>
           </div>
-          <div className="flex flex-wrap text-xl">
-            <div><p className="m-1 p-1">To Pay</p></div>
-            <div><p className="m-1 p-1">{finalPricewithgst}</p></div>
+          <div className="flex flex-wrap text-xl font-bold mt-3 mb-4">
+            <div className="flex-1"><p>To Pay</p></div>
+            <div className="flex-1 text-right"><p>₹{finalPricewithgst}</p></div>
           </div>
-          <button className="bg-green-600 rounded-lg text-white p-3 w-full m-1" onClick={() => { setinputphonenumberbox(true) }}>Place Order</button>   <br />
+          <button className="bg-green-600 rounded-lg text-white p-4 w-full font-semibold hover:bg-green-700 transition duration-200" onClick={() => { setinputphonenumberbox(true) }}>Place Order</button>   <br />
           {inputphonenumberbox === false ? null : (
-            <div>
+            <div className="mt-4">
               {phoneNumber !== null ? <PaymentPage /> : (
                 <>
-                  <input ref={inputPhoneRef} placeholder="e.g +91 8050578803" className="border w-full  rounded-lg border-black p-2 m-1" /><br />
-                  <p className="text-red-600 font-medium flex justify-center">{errormsgphone}</p>
-                  <button className={`bg-green-600 w-full p-3 rounded-lg text-white m-1 ${processing ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleSignin}>Login</button>    <br />
+                  <input ref={inputPhoneRef} placeholder="e.g +91 8050578803" className="border w-full rounded-lg border-gray-300 p-3 mb-2 focus:border-blue-500 focus:outline-none" /><br />
+                  <p className="text-red-600 font-medium flex justify-center mb-2">{errormsgphone}</p>
+                  <button className={`bg-green-600 w-full p-3 rounded-lg text-white font-semibold hover:bg-green-700 transition duration-200 ${processing ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleSignin}>Login</button>    <br />
                 </>
               )}
               {verificationbox === false ? null :
                 <>
-                  <input ref={verificationCodeRef} placeholder="Verification Code" className="border rounded-lg border-black w-full p-2 m-1" /><br />
-                  <p className="text-red-600 font-medium flex justify-center">{errormsgcode}</p>
-                  <button className={`bg-green-600 rounded-lg text-white w-full p-3 m-1 ${processing ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleVerification}>Verify Code</button>
+                  <input ref={verificationCodeRef} placeholder="Verification Code" className="border rounded-lg border-gray-300 w-full p-3 mb-2 mt-2 focus:border-blue-500 focus:outline-none" /><br />
+                  <p className="text-red-600 font-medium flex justify-center mb-2">{errormsgcode}</p>
+                  <button className={`bg-green-600 rounded-lg text-white w-full p-3 font-semibold hover:bg-green-700 transition duration-200 ${processing ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={handleVerification}>Verify Code</button>
                 </>
               }
             </div>

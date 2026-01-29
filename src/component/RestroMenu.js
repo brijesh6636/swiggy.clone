@@ -29,7 +29,7 @@ export const RestroMenu = () => {
   useEffect(() => {
     if (apiData) {
       const menuCards = apiData?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || apiData?.data?.cards?.[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-      if (menuCards && menuCards.length > 1)setRestroMenu(menuCards.slice(1));
+      if (menuCards && menuCards.length > 1) setRestroMenu(menuCards.slice(1));
     }
     // eslint-disable-next-line
   }, [apiData]);
@@ -37,9 +37,9 @@ export const RestroMenu = () => {
     return <Shimmer />;
   }
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen pb-8">
       {/* Restaurant's text title */}
-      <span className="font-extrabold flex justify-center my-2 py-3">
+      <span className="font-extrabold flex justify-center my-4 py-4 text-2xl">
         {apiData?.data?.cards?.[0]?.card?.card?.text}
       </span>
 

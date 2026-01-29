@@ -1,10 +1,10 @@
-
+import { restrodata } from '../MockData/RestroApiData';
 
 export const fetchdata = async () => {
   try {
     const API_KEY = '11006d1b531e3c96';
-    const EDUCORS_URL ='https://educorssolver.host/api/getData';
-    const TARGET_URL ='https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.1017167&lng=77.634826600000011';
+    const EDUCORS_URL = 'https://educorssolver.host/api/getData';
+    const TARGET_URL = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.1017167&lng=77.634826600000011';
 
     const response = await fetch(EDUCORS_URL, {
       method: 'POST',
@@ -17,8 +17,10 @@ export const fetchdata = async () => {
     return restaurantList;
 
   } catch (error) {
-    console.error('Error fetching from API with :', error);
-
+    console.error('Error fetching from API, falling back to mock data:', error);
+    // Fallback to mock data if API fails
+    const restaurantList = extractRestaurants(restrodata);
+    return restaurantList;
   }
 };
 

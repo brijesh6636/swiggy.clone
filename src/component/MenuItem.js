@@ -27,28 +27,26 @@ export const MenuItem = ({ items }) => {
   };
 
   return (
-    <div className="border-b border-slate-950 flex justify-between my-2 mx-2 py-2 px-2">
-      <div className="">
-        <span className="p-5 font-black">{items.card?.info?.name}</span>
-        <br />
-        <span className="p-5 font-black">
+    <div className="border-b border-slate-300 flex justify-between py-4 px-4">
+      <div className="flex-1">
+        <span className="font-bold text-base block mb-2">{items.card?.info?.name}</span>
+        <span className="font-bold text-base block">
           ₹
           {items.card?.info?.price / 100 ||
             items.card?.info?.defaultPrice / 100}
         </span>
       </div>
 
-      <div className="relative">
+      <div className="relative ml-4">
         <img
           src={imagelink + items.card?.info?.imageId}
-          className="w-[130px] h-[130px] rounded-lg"
+          className="w-[150px] h-[150px] rounded-lg object-cover"
           alt="Menu Food "
         />
         <button
           type="button"
-          className={`${
-            added ? "bg-green-500 text-white" : "bg-green-600 text-gray-100"
-          } absolute  transform -translate-y-1/2 right-0 mr-[30px] mt-[-20px]  py-2 px-4 rounded-lg`}
+          className={`${added ? "bg-green-500 text-white" : "bg-green-600 text-gray-100"
+            } absolute transform -translate-x-1/2 left-1/2 bottom-[-12px] py-2.5 px-5 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200`}
           onClick={() => handlebutton(items)}
         >
           {added ? "Added" : "Add +"}
